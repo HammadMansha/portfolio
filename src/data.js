@@ -5,10 +5,13 @@ export const profile = {
   title: 'Senior Flutter Developer',
   location: 'Lahore, Pakistan',
   email: 'hammadmansha136@gmail.com',
+  phone: '+923234442431',
+  phoneLabel: '+92 323 4442431',
   summary:
     'I design and ship visually compelling, high-performance Flutter apps — the kind people actually enjoy using. Four years in, I still care about the same things: clean architecture, thoughtful UI, and code that stays maintainable after launch.',
   github: 'https://github.com/HammadMansha',
   linkedin: 'https://www.linkedin.com/in/hammad-ul-hassan-a6a682207',
+  upwork: 'https://www.upwork.com/freelancers/~01b582432427228cea',
 }
 
 export const stats = [
@@ -25,7 +28,12 @@ export const projects = [
     blurb:
       'Cloud financial platform covering banks, invoices, vendors, reconciliation, and live reporting — with reusable UI, Excel export, and email-ready statements.',
     tags: ['Flutter', 'Fintech', 'Reporting', 'RBAC'],
-    href: 'https://github.com/HammadMansha',
+    image: '/apps/global365.jpg',
+    imageKind: 'wide',
+    links: [
+      { label: 'Website', href: 'https://global365.com/' },
+      { label: 'Accounting', href: 'https://global365.com/accounting' },
+    ],
     accent: 'gold',
   },
   {
@@ -35,7 +43,12 @@ export const projects = [
     blurb:
       'Full payroll suite for employees and contractors: pay runs, tax hub, W-2 / 1099, overtime rules, direct deposit, and tight sync back into accounting.',
     tags: ['Flutter', 'Payroll', 'Tax', 'PDF'],
-    href: 'https://github.com/HammadMansha',
+    image: '/apps/global365-payroll.jpg',
+    imageKind: 'wide',
+    links: [
+      { label: 'Website', href: 'https://global365.com/payroll' },
+      { label: 'Features', href: 'https://global365.com/payroll_features' },
+    ],
     accent: 'teal',
   },
   {
@@ -45,7 +58,8 @@ export const projects = [
     blurb:
       'Turns user videos into 35+ languages with accurate lip sync. Fast APIs, Figma-faithful UI, and a download pipeline that writes finished video to the gallery.',
     tags: ['Flutter', 'AI', 'Video', 'FastAPI'],
-    href: 'https://github.com/HammadMansha',
+    mock: { title: 'Voice Wizard', line: '35+ languages · lip sync' },
+    links: [{ label: 'GitHub', href: 'https://github.com/HammadMansha' }],
     accent: 'gold',
   },
   {
@@ -55,7 +69,12 @@ export const projects = [
     blurb:
       'Real-time detection, segmentation, pose, and classification on phone — no server in the loop. Custom model loading and a fast NMS-free inference path.',
     tags: ['Flutter', 'YOLO', 'On-device AI', 'iOS / Android'],
-    href: 'https://github.com/HammadMansha',
+    image: '/apps/yolo-1.jpg',
+    imageKind: 'phone',
+    links: [
+      { label: 'App Store', href: 'https://apps.apple.com/us/app/ultralytics-yolo/id1452689527' },
+      { label: 'Play Store', href: 'https://play.google.com/store/apps/details?id=com.ultralytics.yolo' },
+    ],
     accent: 'teal',
   },
   {
@@ -65,7 +84,8 @@ export const projects = [
     blurb:
       'Regulatory news and live channels for PEMRA. Highlighted translation locked to video seek time, multi-channel streaming, and a published App Store release.',
     tags: ['Flutter', 'Live streaming', 'iOS'],
-    href: 'https://github.com/HammadMansha/Lytics-Lens',
+    mock: { title: 'Lytics Lens', line: 'Live channels · timed translation' },
+    links: [{ label: 'GitHub', href: 'https://github.com/HammadMansha/Lytics-Lens' }],
     accent: 'gold',
   },
   {
@@ -75,7 +95,11 @@ export const projects = [
     blurb:
       'Fly-to-earn lifestyle app with Google Maps, 2FA, mnemonic wallets, SAP / USDT / ANB transfers, NFT minting, and store listings on both platforms.',
     tags: ['Flutter', 'Web3', 'Wallet', 'NFT'],
-    href: 'https://github.com/HammadMansha/Satoshi-Airline',
+    mock: { title: 'Satoshi Airline', line: 'Fly-to-earn · wallet · NFTs' },
+    links: [
+      { label: 'GitHub', href: 'https://github.com/HammadMansha/Satoshi-Airline' },
+      { label: 'Docs', href: 'https://satoshiair.gitbook.io/docs/about/introduction' },
+    ],
     accent: 'teal',
   },
   {
@@ -85,7 +109,8 @@ export const projects = [
     blurb:
       'Cross-platform shopping with voice search, shared carts, order PDFs, and email updates — shipped to the Play Store.',
     tags: ['Flutter', 'Ecommerce', 'Voice', 'REST'],
-    href: 'https://github.com/HammadMansha/Million-Mart',
+    mock: { title: 'Million Mart', line: 'Shared carts · voice search' },
+    links: [{ label: 'GitHub', href: 'https://github.com/HammadMansha/Million-Mart' }],
     accent: 'gold',
   },
   {
@@ -95,8 +120,36 @@ export const projects = [
     blurb:
       'Live market data, buy/sell with amount sliders, Socket.IO ticks, P2P trades, and a referral loop for growth.',
     tags: ['Flutter', 'Socket.IO', 'P2P', 'Trading'],
-    href: 'https://github.com/HammadMansha/CNX_Exchange',
+    mock: { title: 'CNX Exchange', line: 'Live ticks · P2P trading' },
+    links: [{ label: 'GitHub', href: 'https://github.com/HammadMansha/CNX_Exchange' }],
     accent: 'teal',
+  },
+]
+
+export const gallery = [
+  {
+    src: '/apps/yolo-1.jpg',
+    title: 'Ultralytics YOLO',
+    caption: 'Live segmentation on device',
+    href: 'https://apps.apple.com/us/app/ultralytics-yolo/id1452689527',
+  },
+  {
+    src: '/apps/yolo-2.jpg',
+    title: 'Ultralytics YOLO',
+    caption: 'Object detection overlay',
+    href: 'https://play.google.com/store/apps/details?id=com.ultralytics.yolo',
+  },
+  {
+    src: '/apps/yolo-3.jpg',
+    title: 'Ultralytics YOLO',
+    caption: 'Pose estimation',
+    href: 'https://apps.apple.com/us/app/ultralytics-yolo/id1452689527',
+  },
+  {
+    src: '/apps/yolo-4.jpg',
+    title: 'Ultralytics YOLO',
+    caption: 'Classification + controls',
+    href: 'https://play.google.com/store/apps/details?id=com.ultralytics.yolo',
   },
 ]
 

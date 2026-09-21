@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { experience, profile, projects, skills, stats } from './data'
+import { experience, gallery, profile, projects, skills, stats } from './data'
 
 function useReveal() {
   const ref = useRef(null)
@@ -45,13 +45,13 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const copyEmail = async () => {
+  const copyText = async (value, label, fallbackHref) => {
     try {
-      await navigator.clipboard.writeText(profile.email)
-      setToast('Email copied')
+      await navigator.clipboard.writeText(value)
+      setToast(`${label} copied`)
       window.setTimeout(() => setToast(''), 1800)
     } catch {
-      window.location.href = `mailto:${profile.email}`
+      if (fallbackHref) window.location.href = fallbackHref
     }
   }
 
@@ -70,6 +70,7 @@ export default function App() {
           </a>
           <div className={`nav-links ${open ? 'open' : ''}`}>
             <a href="#work" onClick={closeMenu}>Work</a>
+            <a href="#apps" onClick={closeMenu}>Apps</a>
             <a href="#experience" onClick={closeMenu}>Experience</a>
             <a href="#about" onClick={closeMenu}>About</a>
             <a href="#contact" onClick={closeMenu}>Contact</a>
@@ -98,8 +99,11 @@ export default function App() {
             </p>
             <div className="hero-actions reveal d3">
               <a className="btn btn-primary" href="#work">View selected work</a>
-              <a className="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
+              <a className="btn btn-ghost" href={profile.upwork} target="_blank" rel="noreferrer">
+                Upwork
+              </a>
+              <a className="btn btn-ghost" href={`tel:${profile.phone}`}>
+                Call
               </a>
             </div>
           </div>
@@ -133,13 +137,20 @@ export default function App() {
           </div>
           <div className="work-grid">
             {projects.map((project) => (
-              <a
-                className={`card ${project.accent} inview`}
-                key={project.title}
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <article className={`card ${project.accent} inview`} key={project.title}>
+                {project.image ? (
+                  <div className={`card-media ${project.imageKind}`}>
+                    <img src={project.image} alt={`${project.title} screenshot`} />
+                  </div>
+                ) : (
+                  <div className="card-media phone">
+                    <div className="phone-mock">
+                      <span className="notch" />
+                      <strong>{project.mock.title}</strong>
+                      <small>{project.mock.line}</small>
+                    </div>
+                  </div>
+                )}
                 <div>
                   <div className="card-top">
                     <span>{project.role}</span>
@@ -148,10 +159,45 @@ export default function App() {
                   <h3>{project.title}</h3>
                   <p>{project.blurb}</p>
                 </div>
-                <div className="tags">
-                  {project.tags.map((tag) => (
-                    <span className="tag" key={tag}>{tag}</span>
-                  ))}
+                <div>
+                  <div className="tags">
+                    {project.tags.map((tag) => (
+                      <span className="tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <div className="card-links">
+                    {project.links.map((link) => (
+                      <a key={link.href + link.label} href={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="apps">
+        <div className="wrap">
+          <div className="section-head inview">
+            <div>
+              <p className="eyebrow">On device</p>
+              <h2>Mobile app screenshots.</h2>
+            </div>
+            <p>
+              Official Ultralytics YOLO store shots from the live iOS and Android apps.
+              More product links sit on the cards above.
+            </p>
+          </div>
+          <div className="gallery">
+            {gallery.map((shot) => (
+              <a className="phone-frame inview" key={shot.src} href={shot.href} target="_blank" rel="noreferrer">
+                <img src={shot.src} alt={shot.caption} />
+                <div>
+                  <strong>{shot.title}</strong>
+                  <span>{shot.caption}</span>
                 </div>
               </a>
             ))}
@@ -246,19 +292,40 @@ export default function App() {
                 <a className="btn btn-primary" href={`mailto:${profile.email}`}>
                   Write an email
                 </a>
-                <a className="btn btn-ghost" href={profile.github} target="_blank" rel="noreferrer">
-                  GitHub
+                <a className="btn btn-ghost" href={profile.upwork} target="_blank" rel="noreferrer">
+                  Upwork
                 </a>
               </div>
             </div>
             <div className="contact-list">
-              <button type="button" onClick={copyEmail}>
+              <a href={`tel:${profile.phone}`}>
+                <span>
+                  <small>Phone</small>
+                  <div>{profile.phoneLabel}</div>
+                </span>
+                <span>Call</span>
+              </a>
+              <a href={`https://wa.me/${profile.phone.replace('+', '')}`} target="_blank" rel="noreferrer">
+                <span>
+                  <small>WhatsApp</small>
+                  <div>{profile.phoneLabel}</div>
+                </span>
+                <span>Chat</span>
+              </a>
+              <button type="button" onClick={() => copyText(profile.email, 'Email', `mailto:${profile.email}`)}>
                 <span>
                   <small>Email</small>
                   <div>{profile.email}</div>
                 </span>
                 <span>Copy</span>
               </button>
+              <a href={profile.upwork} target="_blank" rel="noreferrer">
+                <span>
+                  <small>Upwork</small>
+                  <div>Hire me on Upwork</div>
+                </span>
+                <span>Open</span>
+              </a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer">
                 <span>
                   <small>LinkedIn</small>
