@@ -430,141 +430,14 @@ section {
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  padding: 18px 18px 24px;
+  padding: 28px;
   min-height: 280px;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(18, 21, 31, 0.92), rgba(10, 12, 18, 0.92));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 8px;
   transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.card-media {
-  position: relative;
-  z-index: 1;
-  border-radius: 18px;
-  overflow: hidden;
-  margin: 0 0 8px;
-  border: 1px solid var(--line);
-  background: #08090e;
-}
-
-.card-media.wide {
-  aspect-ratio: 16 / 10;
-}
-
-.card-media.phone {
-  aspect-ratio: 16 / 11;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 70% 20%, rgba(232, 195, 122, 0.12), transparent 36%),
-    #0a0c12;
-}
-
-.card-media.phone img {
-  height: 100%;
-  width: auto;
-  max-width: none;
-  object-fit: cover;
-}
-
-.card-media.wide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.phone-mock {
-  position: relative;
-  width: 132px;
-  height: 230px;
-  border-radius: 22px;
-  border: 1px solid rgba(232, 195, 122, 0.28);
-  background: linear-gradient(180deg, #171b27, #0c0e14);
-  padding: 18px 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 6px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
-.phone-mock .notch {
-  position: absolute;
-  top: 22px;
-  width: 42px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(243, 238, 228, 0.16);
-}
-
-.phone-mock strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  line-height: 1.1;
-}
-
-.phone-mock small {
-  color: var(--muted);
-}
-
-.card-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.card-links a {
-  color: var(--gold);
-  font-size: 0.86rem;
-  border-bottom: 1px solid rgba(232, 195, 122, 0.35);
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.phone-frame {
-  display: block;
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: #0b0d13;
-  transition: transform 0.35s ease, border-color 0.35s ease;
-}
-
-.phone-frame:hover {
-  transform: translateY(-6px);
-  border-color: rgba(232, 195, 122, 0.4);
-}
-
-.phone-frame img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 9 / 19;
-  object-fit: cover;
-  background: #111;
-}
-
-.phone-frame div {
-  padding: 14px 16px 16px;
-}
-
-.phone-frame strong {
-  display: block;
-  font-size: 0.92rem;
-}
-
-.phone-frame span {
-  color: var(--muted);
-  font-size: 0.82rem;
 }
 
 .card:hover {
@@ -819,13 +692,8 @@ footer {
   .job,
   .skills,
   .contact-panel,
-  .stats,
-  .gallery {
+  .stats {
     grid-template-columns: 1fr;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .section-head,
